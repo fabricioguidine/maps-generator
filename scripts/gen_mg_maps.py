@@ -3,7 +3,9 @@ Generate maps for MG locations: Minas Gerais state, SP state, Juiz de Fora,
 JF neighborhoods, Cataguases, Zona da Mata, etc.
 """
 import requests, math, sys, io, time
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",
@@ -135,7 +137,7 @@ def render_svg(title, filename, boundaries, classified):
     svg.append(f'<text class="title" x="{SVG_WIDTH/2}" y="35" text-anchor="middle">{title}</text>')
     svg.append(f'<text class="subtitle" x="{SVG_WIDTH/2}" y="55" text-anchor="middle">OpenStreetMap data</text>')
     svg.append('</svg>')
-    filepath = f"../svg/{filename}"
+    filepath = str(_SVG / filename)
     with open(filepath, "w", encoding="utf-8") as f: f.write("\n".join(svg))
     print(f"  SAVED: {filename}")
     for cat in classified:

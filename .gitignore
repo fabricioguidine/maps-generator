@@ -12,3 +12,6 @@ svg/*.svg
 .idea/
 .DS_Store
 Thumbs.db
+*.pyc
+svg/
+.pytest_cache/

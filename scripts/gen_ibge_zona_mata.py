@@ -3,7 +3,9 @@ Generate Zona da Mata (MG) map using IBGE mesoregion boundary.
 IBGE code 3112 = Zona da Mata.
 """
 import requests, math, sys, io, time, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",
@@ -144,7 +146,7 @@ svg.append(f'<text class="title" x="{SVG_WIDTH/2}" y="35" text-anchor="middle">Z
 svg.append(f'<text class="subtitle" x="{SVG_WIDTH/2}" y="55" text-anchor="middle">IBGE / OpenStreetMap</text>')
 svg.append('</svg>')
 
-with open("../svg/zona_da_mata_map.svg", "w", encoding="utf-8") as f:
+with open((_SVG / "zona_da_mata_map.svg"), "w", encoding="utf-8") as f:
     f.write("\n".join(svg))
 print(f"\nSAVED: zona_da_mata_map.svg")
 for cat in classified: print(f"  {cat}: {len(classified[cat])}")

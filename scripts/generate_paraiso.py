@@ -2,7 +2,9 @@
 Generate Paraíso do Morumbi SVG using the official GeoSampa Paraisópolis OD zone polygon.
 """
 import requests, math, sys, io, time
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",

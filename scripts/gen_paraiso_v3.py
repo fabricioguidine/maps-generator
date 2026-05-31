@@ -2,7 +2,9 @@
 Generate Paraíso do Morumbi SVG with boundary traced from Google Maps screenshot.
 """
 import requests, math, sys, io, time
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",
@@ -140,7 +142,7 @@ svg.append(f'<text class="title" x="{SVG_WIDTH/2}" y="35" text-anchor="middle">P
 svg.append(f'<text class="subtitle" x="{SVG_WIDTH/2}" y="55" text-anchor="middle">OpenStreetMap data</text>')
 svg.append('</svg>')
 
-with open("../svg/paraiso_morumbi_map.svg", "w", encoding="utf-8") as f:
+with open((_SVG / "paraiso_morumbi_map.svg"), "w", encoding="utf-8") as f:
     f.write("\n".join(svg))
 print(f"\nSAVED: paraiso_morumbi_map.svg")
 for cat in classified: print(f"  {cat}: {len(classified[cat])}")
