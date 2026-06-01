@@ -3,7 +3,9 @@ Generate all SVG maps with correct road coverage.
 Fetches boundaries first, computes bbox from them, then fetches roads.
 """
 import requests, math, sys, io, time, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",

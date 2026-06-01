@@ -1,6 +1,8 @@
 """Generate UFJF campus map with buildings, paths, and roads."""
 import requests, math, sys, io, time
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+from _compat import enable_utf8_stdout, svg_dir
+enable_utf8_stdout()
+_SVG = svg_dir()
 
 URLS = ['https://overpass.kumi.systems/api/interpreter','https://overpass-api.de/api/interpreter']
 SVG_W, SVG_H, PAD = 1200, 1600, 40
@@ -183,6 +185,6 @@ svg.append(f'<text class="title" x="{SVG_W/2}" y="35" text-anchor="middle">UFJF<
 svg.append(f'<text class="subtitle" x="{SVG_W/2}" y="55" text-anchor="middle">Universidade Federal de Juiz de Fora</text>')
 svg.append('</svg>')
 
-with open('../svg/ufjf_map.svg','w',encoding='utf-8') as f: f.write('\n'.join(svg))
+with open((_SVG / "ufjf_map.svg"),'w',encoding='utf-8') as f: f.write('\n'.join(svg))
 print(f'\nSAVED: ufjf_map.svg')
 for c in cl: print(f'  {c}: {len(cl[c])}')
