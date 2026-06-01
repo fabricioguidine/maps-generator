@@ -1,9 +1,7 @@
 <div align="center">
 <img src=".github/assets/banner.svg" alt="maps-generator" width="100%">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.x+-blue.svg)](https://www.python.org)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.x+-blue.svg)](https://www.python.org) [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#)
 </div>
 
 > Render Brazilian regional maps to standalone SVG from OpenStreetMap and IBGE data.
